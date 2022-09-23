@@ -1,2 +1,53 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>商品新規登録</h1>
+
+<p>商品画像</p>
+<P></P>
+
+<p></p>
+
+<html>
+<body>
+  <div class="mx-auto" style="width: 200px;">
+
+    <h2>商品新規登録</h2>
+
+      <%= form_with(model: @item, local: true) do |form| %>
+      <% if @item.errors.any? %>
+      <div id="error_explanation">
+      <h3><%= pluralize(@item.errors.count, "error") %> prohibited book from being saved:</h3>
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      </div>
+      <% end %>
+      <% end %>
+
+     <%= form_with model: @item do |f| %>
+      <label for="inputPicture">商品画像</label>
+      <!--画像の空欄-->
+      <div><%= f.text_field :, autofocus: true, id:"picture", placeholder:""%>
+
+      <div><label for="inputName">商品名</label>
+      <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:""%>
+
+      <div><label for="inputIntroduction">商品説明</label>
+      <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:""%>
+
+      <div><label for="inputGenre">ジャンル</label>
+      <div><%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:""%>
+
+      <div><label for="inputIntroduction">税抜価格
+      <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:""%>円</label>
+
+      <div><label for="inputIntroduction">販売ステータス</label>
+      <div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
+
+
+      <div><%= f.submit "新規登録",class: "btn btn-success" %>
+     <% end %>
+
+    </div>
+    </body>
+    </htm

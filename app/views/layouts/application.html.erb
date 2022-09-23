@@ -3,8 +3,6 @@
   <head>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    < %= csrf_meta_tags %>
-    < %= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -52,7 +50,7 @@
                 ログアウト
                <% end %>
             </li>
-            <% else if customer_signed_in? %>
+            <% elsif customer_signed_in? %>
             <li class="nav-item">
               <%= link_to public_customers_show_path, class: 'nav-link text-white' do %>
                  マイページ
@@ -104,11 +102,11 @@
       </nav>
     </header>
 
-    <main class="mb-auto">
+   <!-- <main class="mb-auto">
       <p class="notice">< %= notice %></p>
     < %= yield %>
 
-    </main>
+    </main-->
 
   </body>
 </html>

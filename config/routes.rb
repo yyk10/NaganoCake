@@ -14,6 +14,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 
   namespace :admin do
     get 'homes/top'
+    get 'homes/about'
   end
   namespace :admin do
     get 'orders/show'
