@@ -1,25 +1,54 @@
-<h1>商品一覧</h1>
 
-<table>
-  <thead>
+ <div class="container">
+   <div class="row">
+    <div class style="padding: 50px;">
+      <div class="d-flex justify-content-between">
+        <h3 class="border bg-light">商品一覧</h3>
+
+        <% if @admin == current_admin %>
+        <button type="button" class="btn btn-outline-secondary rounded-circle p-0" style="width:2rem;height:2rem;">
+        <%= link_to "＋", admin_items_new_path  %>
+        </button>
+       <% end %>
+       </div>
+       </div>
+    </div>
+   </div>
+ </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+     <table class="table">
+  　　　<thead>
     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+       <th scope="col">商品ID</th>
+      <th></th>
+      <th scope="col">商品名</th>
+      <th></th>
+      <th scope="col">税抜価格</th>
+      <th></th>
+      <th scope="col">ジャンル</th>
+      <th></th>
+      <th scope="col">ステータス</th>
     </tr>
   </thead>
   <tbody>
+     <% @items.each do |item| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.introduction %></td>
+      <td><%= item.price %></td>
+      <td><%= item.is_active %></td>
     </tr>
+     <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
+</div>
+
 
 <!--ページネイションを入れる-->
 

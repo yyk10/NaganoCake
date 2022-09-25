@@ -10,36 +10,38 @@
   <div class="mx-auto" style="width: 200px;">
 
     <h2>商品新規登録</h2>
-
-      <%= form_with(model: @item, local: true) do |form| %>
-      <% if @item.errors.any? %>
+    
+    　<!--%= form_with(model: [:admins,@item] , local: true) do |form| %>
+      < % if @item.errors.any? %>
       <div id="error_explanation">
-      <h3><%= pluralize(@item.errors.count, "error") %> prohibited book from being saved:</h3>
+      <h3>< %= pluralize(@item.errors.count,"error") %> prohibited book from being saved:</h3>
       <ul>
-      <% @item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
+      < % @item.errors.full_messages.each do |message| %>
+      <li>< %= message %></li>
+      < % end %>
       </ul>
       </div>
-      <% end %>
-      <% end %>
+      < % end %>
+      < % end %>
 
-     <%= form_with model: @item do |f| %>
+     <%= form_with model: [:admins,@item] do |f| %>
       <label for="inputPicture">商品画像</label>
       <!--画像の空欄-->
-      <div><%= f.text_field :, autofocus: true, id:"picture", placeholder:""%>
+      <div>><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
 
       <div><label for="inputName">商品名</label>
-      <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:""%>
+      <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名" %>
 
       <div><label for="inputIntroduction">商品説明</label>
-      <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:""%>
+      <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します" %>
 
       <div><label for="inputGenre">ジャンル</label>
-      <div><%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:""%>
+      
+      <!--ジャンルの名から選ぶ、矢印をつける-->
+      <div><%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:"選択してください" %>
 
       <div><label for="inputIntroduction">税抜価格
-      <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:""%>円</label>
+      <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</label>
 
       <div><label for="inputIntroduction">販売ステータス</label>
       <div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
