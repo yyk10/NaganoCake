@@ -1,53 +1,77 @@
-<h1>商品編集</h1>
+<div class="container">
+   <div class="row">
+   <div class style="padding: 50px;">
+      <h3 class="border bg-light">
+        <div class="mx-3">商品編集</h3></div>
 
-<p>商品画像</p>
-<P></P>
+   </div>
+   </div>
+ </div>
+<div class="container">
+  <div class="row">
 
-<p></p>
 
-<html>
-<body>
-  <div class="mx-auto" style="width: 200px;">
-
-    <h2>商品新規登録</h2>
-
-      <%= form_with(model: @item, local: true) do |form| %>
-      <% if @item.errors.any? %>
+      <!--%= form_with(model: @item, local: true) do |form| %>
+      < % if @item.errors.any? %>
       <div id="error_explanation">
-      <h3><%= pluralize(@item.errors.count, "error") %> prohibited book from being saved:</h3>
+      <h3>< %= pluralize(@item.errors.count, "error") %> prohibited book from being saved:</h3>
       <ul>
-      <% @item.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
+      < % @item.errors.full_messages.each do |message| %>
+      <li>< %= message %></li>
+      < % end %>
       </ul>
       </div>
-      <% end %>
-      <% end %>
+      < % end %>
+      < % end %-->
 
      <%= form_with model: @item do |f| %>
-      <label for="inputPicture">商品画像</label>
+     <div class="mb-3">
+      <label for="inputPicture" class="form-label">商品画像</label>
       <!--画像の空欄-->
-      <div><%= f.text_field :, autofocus: true, id:"picture", placeholder:""%>
-
-      <div><label for="inputName">商品名</label>
-      <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:""%>
-
-      <div><label for="inputIntroduction">商品説明</label>
-      <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:""%>
-
-      <div><label for="inputGenre">ジャンル</label>
-      <div><%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:""%>
-
-      <div><label for="inputIntroduction">税抜価格
-      <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:""%>円</label>
-
-      <div><label for="inputIntroduction">販売ステータス</label>
-      <div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
+      <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
+      </div>
+      
+       <div class="mb-3">
+        <label for="inputName" class="form-label">商品名</label>
+      <%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名"%>
+       </div>
+       <div class="mb-3">
+        <label for="inputIntroduction" class="form-label">商品説明</label>
+       <%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します"%>
+       </div>
+       
+      <div class="mb-3">
+       <label for="exampleFormSelect1" class="form-label">ジャンル</label>
+        <select class="form-select" id="exampleFormSelect1">
+       <option selected>--選択してください--</option>
+      <option value="1">その1</option>
+      <option value="2">その2</option>
+       <option value="3">その3</option>
+       </select>
+        </div>
+        
+      <!--%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:""%-->
+      
+      <div class="mb-3">
+      <label for="inputIntroduction" class="form-label">税抜価格
+      <%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000"%>円</label>
+      </div>
+      
+      <div class="mb-3">
+      <label for="inputIntroduction" class="form-label">販売ステータス</label>
+      <div class="form-check form-check-inline">
+  　　<input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label for="inlineRadio1" class="form-check-label">販売中</label>
+      </div>
+      <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label for="inlineRadio2" class="form-check-label">販売停止中</label>
+     </div>
+      </div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
 
 
       <div><%= f.submit "変更を保存",class: "btn btn-success" %>
      <% end %>
-
+     </div>
     </div>
-    </body>
-    </htm
+    </div>

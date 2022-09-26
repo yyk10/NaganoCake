@@ -1,16 +1,15 @@
-<h1>商品新規登録</h1>
+<div class="container">
+   <div class="row">
+   <div class style="padding: 50px;">
+      <h3 class="border bg-light">
+        <div class="mx-3">商品新規登録</h3></div>
 
-<p>商品画像</p>
-<P></P>
-
-<p></p>
-
-<html>
-<body>
+   </div>
+   </div>
+ </div>
+ 
   <div class="mx-auto" style="width: 200px;">
 
-    <h2>商品新規登録</h2>
-    
     　<!--%= form_with(model: [:admins,@item] , local: true) do |form| %>
       < % if @item.errors.any? %>
       <div id="error_explanation">
@@ -22,7 +21,7 @@
       </ul>
       </div>
       < % end %>
-      < % end %>
+      < % end %-->
 
      <%= form_with model: [:admins,@item] do |f| %>
       <label for="inputPicture">商品画像</label>
@@ -35,14 +34,31 @@
       <div><label for="inputIntroduction">商品説明</label>
       <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します" %>
 
-      <div><label for="inputGenre">ジャンル</label>
-      
-      <!--ジャンルの名から選ぶ、矢印をつける-->
-      <div><%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:"選択してください" %>
+      <div class="mb-3">
+       <label for="exampleFormSelect1" class="form-label">ジャンル</label>
+        <select class="form-select" id="exampleFormSelect1">
+       <option selected>--選択してください--</option>
+      <option value="1">その1</option>
+      <option value="2">その2</option>
+       <option value="3">その3</option>
+       </select>
+        </div>
+
 
       <div><label for="inputIntroduction">税抜価格
       <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</label>
 
+     <div class="mb-3">
+      <label for="inputIntroduction" class="form-label">販売ステータス</label>
+      <div class="form-check form-check-inline">
+  　　<input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label for="inlineRadio1" class="form-check-label">販売中</label>
+      </div>
+      <div class="form-check form-check-inline">
+      <input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label for="inlineRadio2" class="form-check-label">販売停止中</label>
+     </div>
+      </div><!--%= f
       <div><label for="inputIntroduction">販売ステータス</label>
       <div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
 

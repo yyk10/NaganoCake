@@ -1,10 +1,10 @@
 class Item < ApplicationRecord
-  
+
    validates :name, presence: true, length: { maximum: 50 }
    validates :introduction, presence: true, length: { maximum: 140 }
    validates :price, presence: true, length: { maximum: 30 }
    validates :is_active, presence: true
-   
+
   has_one_attached :profile_image
 
 
