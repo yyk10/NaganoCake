@@ -11,9 +11,10 @@ class Admin::ItemsController < ApplicationController
 
   def create
       @item = Item.new(item_params)
-      @item.admin_id = current_admin.id
-      @admin = @item.admin
-   if @admin.save
+      #@item.admin_id = current_admin.id
+      #@admin = @item.admin
+      @genre = @item.genre_id
+   if @item.save
        flash[:notice] = "Item was successfully created"
        redirect_to admin_item_path(@item.id)
    else
@@ -35,12 +36,12 @@ class Admin::ItemsController < ApplicationController
     if @item.update (item_params)
     redirect_to item_path, notice: 'Item information updated successfully'
     else
-     if @item.update(item_params)
+    if @item.update(item_params)
         redirect_to item_path(@item.id)
-     else
+    else
     render :edit , status: :unprocessable_entity
     end
-   end
+    end
   end
 
   private

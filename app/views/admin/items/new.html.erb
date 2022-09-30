@@ -25,8 +25,8 @@
 
      <%= form_with model: [:admin,@item] do |f| %>
       <label for="inputPicture">商品画像</label>
-      <!--画像の空欄-->
-      <div>><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
+  
+      <div><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
 
       <div><label for="inputName">商品名</label>
       <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名" %>
