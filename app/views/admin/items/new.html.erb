@@ -10,23 +10,22 @@
 
   <div class="mx-auto" style="width: 200px;">
 
-    　<!--%= form_with(model: [:admins,@item] , local: true) do |form| %>
-      < % if @item.errors.any? %>
+    　<%= form_with(model: [:admin,@item] ,local: true) do |f| %>
+      <% if @item.errors.any? %>
       <div id="error_explanation">
-      <h3>< %= pluralize(@item.errors.count,"error") %> prohibited book from being saved:</h3>
+      <h3><%= pluralize(@item.errors.count,"error") %> prohibited book from being saved:</h3>
       <ul>
-      < % @item.errors.full_messages.each do |message| %>
+      <% @item.errors.full_messages.each do |message| %>
       <li>< %= message %></li>
-      < % end %>
+      <% end %>
       </ul>
       </div>
-      < % end %>
-      < % end %-->
-
-     <%= form_with model: [:admin,@item] do |f| %>
-      <label for="inputPicture">商品画像</label>
+      <% end %>
   
-      <div><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
+
+    
+      <label for="inputPicture">商品画像</label>
+      <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
 
       <div><label for="inputName">商品名</label>
       <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名" %>
@@ -34,33 +33,29 @@
       <div><label for="inputIntroduction">商品説明</label>
       <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します" %>
 
-      <div class="mb-3">
-       <label for="exampleFormSelect1" class="form-label">ジャンル</label>
-        <select class="form-select" id="exampleFormSelect1">
-       <option selected>--選択してください--</option>
-      <option value="1">その1</option>
-      <option value="2">その2</option>
-       <option value="3">その3</option>
-       </select>
-        </div>
+    　<div class="field">
+    　　　 <%= f.label :ジャンル　 %><br />
+    　 　<%= f.select :genres, Genre.all.map { |genre| [genre.name, genre.id] } %>
+  　　　</div>
+
+       <label for="inputIntroduction">税抜価格
+      <%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</label>
 
 
-      <div><label for="inputIntroduction">税抜価格
-      <div><%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</label>
-
-     <div class="mb-3">
-      <label for="inputIntroduction" class="form-label">販売ステータス</label>
-      <div class="form-check form-check-inline">
-  　　<input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label for="inlineRadio1" class="form-check-label">販売中</label>
+    　<%= form_with(model: [:admin,@item], local: true) do |f| %>
+  　　<div class="done">
+    　<%= f.label :販売ステータス %>
+      <div>
+      <%= f.radio_button :done, true %>
+      <%= f.label :done, '販売中', value: true %>
       </div>
-      <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label for="inlineRadio2" class="form-check-label">販売停止中</label>
+      <div>
+      <%= f.radio_button :done, false %>
+      <%= f.label :done, '販売停止中', value: false %>
      </div>
-      </div><!--%= f
-      <div><label for="inputIntroduction">販売ステータス</label>
-      <div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
+     </div>
+   <% end %>
+
 
 
       <div><%= f.submit "新規登録",class: "btn btn-success" %>

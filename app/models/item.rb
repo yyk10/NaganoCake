@@ -5,6 +5,9 @@ class Item < ApplicationRecord
    validates :price, presence: true, length: { maximum: 30 }
    validates :is_active, presence: true
 
+  belongs_to :admin
+  belongs_to :genre
+
   has_one_attached :profile_image
 
 

@@ -5,4 +5,5 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :genres, dependent: :destroy
+  has_many :items, dependent: :destroy
 end

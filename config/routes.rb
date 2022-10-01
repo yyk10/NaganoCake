@@ -14,7 +14,6 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 
   namespace :admin do
     get 'homes/top' =>'homes#top', as: 'admin'
-    get 'homes/about'
   end
   namespace :admin do
     resources :orders, only: [:show, :update]
@@ -22,7 +21,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     #get 'orders/update'
   end
   namespace :admin do
-    resources :customers, only:[:index, :show, :edit, :update] 
+    resources :customers, only:[:index, :show, :edit, :update]
     #get 'customers/index'
     #get 'customers/show'
     #get 'customers/edit'
@@ -49,7 +48,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     get 'homes/about'
   end
   namespace :public do
-    resources :addresses, only: [:ibdex, :edit] 
+    resources :addresses, only: [:ibdex, :edit]
    # get 'addresses/index'
   #  get 'addresses/edit'
   end

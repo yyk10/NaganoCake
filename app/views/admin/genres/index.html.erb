@@ -9,16 +9,17 @@
 
  <div class="container">
    <div class="row">
-      <form method="post" action="hoge" class="form-inline text-left">
-     <div class="form-group">
-     <%= form_for [:admin,@genre] do |f| %>
 
-      <label for="genres" class="control-label">ジャンル名</label>
-      <input type="text" name="name" id="name" placeholder="" class="form-control">
-    </div>
-      <button type="submit" class="btn btn-success">新規登録</button>
+     <%= form_with model: [:admin, @genre], local: true do |f| %>
+
+     <div class="field">
+    <%= f.label :ジャンル名 %>
+    <%= f.text_field :name, autofocus: true ,placeholder:"ジャンル名" %>
+  </div>
+
+    <%= f.submit "新規登録",class: "btn btn-success" %>
     <% end %>
-     </form>
+
   </div>
 </div>
 <div class="container">
@@ -36,7 +37,7 @@
 
       <td>
          <% if @genre.admin == current_admin %>
-        <%= link_to "編集する", admin_genre_edit_path(@genre.id) ,class: "btn btn-success" %>
+        <%= link_to "編集する", edit_admin_genre_path(@genre.id) ,class: "btn btn-success" %>
       </td>
     </tr>
       <% end %>
