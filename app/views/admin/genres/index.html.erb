@@ -9,21 +9,20 @@
 
  <div class="container">
    <div class="row">
-
+       <div class="text-left">
      <%= form_with model: [:admin, @genre], local: true do |f| %>
 
-     <div class="field">
     <%= f.label :ジャンル名 %>
     <%= f.text_field :name, autofocus: true ,placeholder:"ジャンル名" %>
-  </div>
 
     <%= f.submit "新規登録",class: "btn btn-success" %>
     <% end %>
-
+     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
+       <div class="col-md-8">
      <table class="table">
   　　　<thead>
     <tr>
@@ -36,14 +35,12 @@
      <td><%= genre.name %></td>
 
       <td>
-         <% if @genre.admin == current_admin %>
-        <%= link_to "編集する", edit_admin_genre_path(@genre.id) ,class: "btn btn-success" %>
+        <%= link_to "編集する", edit_admin_genre_path(genre.id),class: "btn btn-success" %>
+
       </td>
+     <% end %>
     </tr>
-      <% end %>
-      <% end %>
   </tbody>
 </table>
   </div>
 </div>
-

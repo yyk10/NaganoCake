@@ -13,7 +13,8 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 }
 
   namespace :admin do
-    get 'homes/top' =>'homes#top', as: 'admin'
+    root to: "homes#top"
+  
   end
   namespace :admin do
     resources :orders, only: [:show, :update]

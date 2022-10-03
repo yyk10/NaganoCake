@@ -1,5 +1,4 @@
 class Genre < ApplicationRecord
-    belongs_to :admin
 
-    has_many :item
+    has_many :items
 end

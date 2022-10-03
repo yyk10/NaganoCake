@@ -10,14 +10,14 @@
 
  <div class="container">
    <div class="row">
-      <%= form_with model: @genre do |f| %>
+      <%= form_with model: [:admin, @genre] do |f| %>
        <div class="mb-3">
-      <label for="inputName" class="form-label">ジャンル</label>
+      <%= f.label :ジャンル名 %>
 
       <%= f.text_field :name, autofocus: true, id:"name",placeholder:"" %>
-
+ 
       <%= f.submit "変更を保存",class: "btn btn-success" %>
        </div>
-   <% end %>
+  <% end %>
 </div>
  </div>

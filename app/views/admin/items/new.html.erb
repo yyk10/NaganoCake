@@ -7,60 +7,69 @@
    </div>
    </div>
  </div>
-
-  <div class="mx-auto" style="width: 200px;">
+<div class="container">
+    <div class="row">
+  <div class="mx-auto" style="width: 500px;">
 
     　<%= form_with(model: [:admin,@item] ,local: true) do |f| %>
-      <% if @item.errors.any? %>
-      <div id="error_explanation">
-      <h3><%= pluralize(@item.errors.count,"error") %> prohibited book from being saved:</h3>
-      <ul>
-      <% @item.errors.full_messages.each do |message| %>
-      <li>< %= message %></li>
-      <% end %>
-      </ul>
-      </div>
-      <% end %>
-  
 
-    
-      <label for="inputPicture">商品画像</label>
-      <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
+      <table width="650px">
+      <tr><th><%= f.label :商品画像 %></th>
+      <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
+      </tr>
+      <tr>
+      <th><%= f.label :商品名 %></th>
+      <td><%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名" %></td>
+      </tr>
+      <tr>
+      <th><%= f.label :商品説明 %></th>
+      <td><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します" %></td>
+      </tr>
 
-      <div><label for="inputName">商品名</label>
-      <div><%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名" %>
+      <tr>
+    　<th><%= f.label :ジャンル %></th>
+    　<td><%= f.select :genres, Genre.all.map { |genre| [genre.name, genre.id] },placeholder:"選択してください" %></td>
+      </tr>
 
-      <div><label for="inputIntroduction">商品説明</label>
-      <div><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します" %>
+      <tr>
+      <th><%= f.label :税抜価格 %></th>
+      <td><%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</td>
+      </tr>
 
-    　<div class="field">
-    　　　 <%= f.label :ジャンル　 %><br />
-    　 　<%= f.select :genres, Genre.all.map { |genre| [genre.name, genre.id] } %>
-  　　　</div>
-
-       <label for="inputIntroduction">税抜価格
-      <%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000" %>円</label>
-
-
-    　<%= form_with(model: [:admin,@item], local: true) do |f| %>
+      <tr>
+    　 <%= form_with(model: [:admin,@item], local: true) do |f| %>
   　　<div class="done">
-    　<%= f.label :販売ステータス %>
-      <div>
+    　<th><%= f.label :販売ステータス %></th>
+    　<td>
       <%= f.radio_button :done, true %>
       <%= f.label :done, '販売中', value: true %>
-      </div>
-      <div>
+
       <%= f.radio_button :done, false %>
       <%= f.label :done, '販売停止中', value: false %>
-     </div>
-     </div>
-   <% end %>
 
+     </td>
+     </div>
 
+      </tr>
+     </table>
 
       <div><%= f.submit "新規登録",class: "btn btn-success" %>
      <% end %>
-
+     <% end %>
     </div>
-    </body>
-    </htm
+    </div>
+   </div>
+   </div>
+
+<!--% if @item.errors.any? %>
+      <div id="error_explanation">
+      <h3>< %= pluralize(@item.errors.count,"error") %> prohibited book from being saved:</h3>
+      <ul>
+      < % @item.errors.full_messages.each do |message| % >
+      <li>< %= message %></li>
+      < % end %>
+      </ul>
+      </div>
+      < % end %>
+
+
