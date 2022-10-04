@@ -1,32 +1,53 @@
-<h1>商品詳細</h1>
-<p></p>
+
+<div class="container">
+   <div class="row">
+   <div class style="padding: 50px;">
+      <h3 class="border bg-light">
+        <div class="mx-3">商品詳細</h3></div>
+
+   </div>
+   </div>
+ </div>
+
+ <div class="container">
+   <div class="row">
+     <div class="col-4">
+    <!--%= image_tag @item.get_profile_image(100,100) %-->
+
+     </div>
 
 <table class="table">
   <thead>
     <tr>
       <th>商品名</th>
-      <td></td>
+      <td><%= @item.name %></td>
     </tr>
     <tr>
      <th>商品説明</th>
-     <td></td>
+     <td><%= @item.introduction %></td>
     </tr>
     <tr>
       <th>ジャンル</th>
-      <td></td>
+      <td><%= @item.genre.name %></td>
     </tr>
     <tr>
       <th>税込価格（税抜価格）</th>
-      <td></td>
+      <td><%= @item.add_tax_price.to_s(:dalimited) %>(<%= (@item.price).to_s(:delimited) %>)円</td>
     </tr>
     <tr>
       <th>販売ステータス</th>
-      <td></td>
+      <td>
+         <% if @item.is_active == true %>
+        <%= "販売中" %>
+      <% else %>
+        <%=  "販売停止中" %>
+      <% end %>
+      </td>
     </tr>
   </thead>
-
-  　 <%= link_to "編集する", edit_items_path(@item.id) ,class: "btn btn-success" %>
+  　
 
 </table>
-
-
+ <%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
+</div>
+</div>

@@ -11,9 +11,21 @@
     <div class="row">
   <div class="mx-auto" style="width: 500px;">
 
-    　<%= form_with(model: [:admin,@item] ,local: true) do |f| %>
+    　<%= form_with model:[:admin,@item],local: true do |f| %>
 
       <table width="650px">
+
+       <% if @item.errors.any? %>
+      <div id="error_explanation">
+     <h3><%= pluralize(@item.errors.count, "error") %> prohibited this book from being saved:</h3>
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+       </ul>
+  </div>
+  </div>
+  <% end %>
       <tr><th><%= f.label :商品画像 %></th>
       <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
       </tr>
@@ -28,7 +40,7 @@
 
       <tr>
     　<th><%= f.label :ジャンル %></th>
-    　<td><%= f.select :genres, Genre.all.map { |genre| [genre.name, genre.id] },placeholder:"選択してください" %></td>
+    　<td><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] },{prompt: "--選択してください--"} %></td>
       </tr>
 
       <tr>
@@ -37,15 +49,15 @@
       </tr>
 
       <tr>
-    　 <%= form_with(model: [:admin,@item], local: true) do |f| %>
+
   　　<div class="done">
     　<th><%= f.label :販売ステータス %></th>
     　<td>
-      <%= f.radio_button :done, true %>
-      <%= f.label :done, '販売中', value: true %>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, '販売中', value: true %>
 
-      <%= f.radio_button :done, false %>
-      <%= f.label :done, '販売停止中', value: false %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, '販売停止中', value: false %>
 
      </td>
      </div>
@@ -54,7 +66,6 @@
      </table>
 
       <div><%= f.submit "新規登録",class: "btn btn-success" %>
-     <% end %>
      <% end %>
     </div>
     </div>

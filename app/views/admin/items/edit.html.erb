@@ -11,65 +11,62 @@
   <div class="row">
 
 
-      <!--%= form_with(model: @item, local: true) do |form| %>
-      < % if @item.errors.any? %>
+     
+    
+       <table width="650px">
+  <%= form_with model: [:admin, @item],local: true do |f| %> 
+       <!--% if @item.errors.any? %>
       <div id="error_explanation">
-      <h3>< %= pluralize(@item.errors.count, "error") %> prohibited book from being saved:</h3>
-      <ul>
+     <h3>< %= pluralize(@item.errors.count, "error") %> prohibited this book from being saved:</h3>
+    <ul>
       < % @item.errors.full_messages.each do |message| %>
-      <li>< %= message %></li>
+        <li>< %= message %></li>
       < % end %>
-      </ul>
-      </div>
-      < % end %>
-      < % end %-->
+       </ul>
+  </div>
+  </div-->
+ 
+      <tr>
+       <th><%= f.label :商品画像 %></th>
+      <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
+      </tr>
+      <tr>
+      <th><%= f.label :商品名 %></th>
+      <td><%= f.text_field :name, autofocus: true, id:"name",placeholder:"" %></td>
+      </tr>
+      <tr>
+      <th><%= f.label :商品説明 %></th>
+      <td><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"" %></td>
+      </tr>
 
-     <%= form_with model: @item do |f| %>
-     <div class="mb-3">
-      <label for="inputPicture" class="form-label">商品画像</label>
-      <!--画像の空欄-->
-      <%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %>
-      </div>
+      <tr>
+    　<th><%= f.label :ジャンル %></th>
+    　<td><%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] },{prompt: "--選択してください--"} %></td>
+      </tr>
 
-       <div class="mb-3">
-        <label for="inputName" class="form-label">商品名</label>
-      <%= f.text_field :name, autofocus: true, id:"name",placeholder:"商品名"%>
-       </div>
-       <div class="mb-3">
-        <label for="inputIntroduction" class="form-label">商品説明</label>
-       <%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"ここに説明文を記述します"%>
-       </div>
+      <tr>
+      <th><%= f.label :税抜価格 %></th>
+      <td><%= f.text_field :price, autofocus: true, id:"price",placeholder:"" %>円</td>
+      </tr>
 
-      <div class="mb-3">
-       <label for="exampleFormSelect1" class="form-label">ジャンル</label>
-        <select class="form-select" id="exampleFormSelect1">
-       <option selected>--選択してください--</option>
-      <option value="1">その1</option>
-      <option value="2">その2</option>
-       <option value="3">その3</option>
-       </select>
-        </div>
+      <tr>
 
-      <!--%= f.text_field :is_active, autofocus: true, id:"genre",placeholder:""%-->
+  　
+    　<th><%= f.label :販売ステータス %></th>
+    　<td>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, '販売中', value: true %>
 
-      <div class="mb-3">
-      <label for="inputIntroduction" class="form-label">税抜価格
-      <%= f.text_field :price, autofocus: true, id:"price",placeholder:"1000"%>円</label>
-      </div>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, '販売停止中', value: false %>
 
-      <div class="mb-3">
-      <label for="inputIntroduction" class="form-label">販売ステータス</label>
-      <div class="form-check form-check-inline">
-  　　<input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label for="inlineRadio1" class="form-check-label">販売中</label>
-      </div>
-      <div class="form-check form-check-inline">
-      <input type="radio" class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label for="inlineRadio2" class="form-check-label">販売停止中</label>
+     </td>
      </div>
-      </div><!--%= f.text_field :name, autofocus: true, id:"name",placeholder:""%-->
 
+      </tr>
+     </table>
 
+     
       <div><%= f.submit "変更を保存",class: "btn btn-success" %>
      <% end %>
      </div>
