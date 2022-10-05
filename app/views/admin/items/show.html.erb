@@ -12,7 +12,7 @@
  <div class="container">
    <div class="row">
      <div class="col-4">
-    <!--%= image_tag @item.get_profile_image(100,100) %-->
+    <%= image_tag @item.get_profile_image(100,100) %>
 
      </div>
 
@@ -45,7 +45,7 @@
       </td>
     </tr>
   </thead>
-  　
+
 
 </table>
  <%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
