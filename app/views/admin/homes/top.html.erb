@@ -19,17 +19,20 @@
     </tr>
   </thead>
    <tbody>
-     <!--% @customer.each do |customer| %-->
+     <!--% @orders.each do |order| %>
     <tr>
-     <td><!--%= customer. %-->hiniti</td>
-     <td><!--% customer.name %--></td>
-     <td><!--% customer.amount %--></td>
+     <td>< %= order.id  %> </td>
+     <td>< %= order.name %></td>
+     <td>< %= order.amount %></td>
      <td>
+     < %= order.status %>
+        < % end %></td>
 
      </td>
     </tr>
-      < % end %>
+
    </tbody>
    </table>
+    < %= paginate @orders %>
   </div>
 </div>
