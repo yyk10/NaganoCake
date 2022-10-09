@@ -11,10 +11,10 @@
   <div class="row">
 
 
-     
-    
+
+
        <table width="650px">
-  <%= form_with model: [:admin, @item],local: true do |f| %> 
+  <%= form_with model: [:admin, @item],local: true do |f| %>
        <!--% if @item.errors.any? %>
       <div id="error_explanation">
      <h3>< %= pluralize(@item.errors.count, "error") %> prohibited this book from being saved:</h3>
@@ -25,7 +25,7 @@
        </ul>
   </div>
   </div-->
- 
+
       <tr>
        <th><%= f.label :商品画像 %></th>
       <td><%= f.file_field :profile_image, placeholder: "ファイルを選択", accept: "image/*" %></td>
@@ -51,7 +51,7 @@
 
       <tr>
 
-  　
+
     　<th><%= f.label :販売ステータス %></th>
     　<td>
       <%= f.radio_button :is_active, true %>
@@ -66,7 +66,7 @@
       </tr>
      </table>
 
-     
+
       <div><%= f.submit "変更を保存",class: "btn btn-success" %>
      <% end %>
      </div>

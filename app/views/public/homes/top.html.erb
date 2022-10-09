@@ -1,0 +1,19 @@
+ <div class="container">
+
+      <div class="col-md-8 offset-md-2">
+        
+   <h1>ようこそながのCAKEへ！</h1>
+   <p>このサイトは、ケーキ販売のECサイトになります。<br>
+   会員の方も商品の閲覧はできますが、<br>
+   購入には会員登録が必要になります。</p>
+   
+   <h2><strong>新着商品</strong></h2>
+   <%= @items.each do |item| %>
+   　<img src="/assets/test.jpg" class="hoge">
+    <%= @item.name %>
+    ¥<%= @item.add_tax_price.to_s(:dalimited) %>
+   <% end %>
+   
+   <%= link_to "全ての商品を見る" ,public_item_path %>
+</div>
+</div>
