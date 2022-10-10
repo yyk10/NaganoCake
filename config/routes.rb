@@ -11,7 +11,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 
-
+  root to: "public/homes#top"
   
   namespace :admin do
     root to: "homes#top"
@@ -45,10 +45,11 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     #get 'items/edit'
     #get 'items/update'
   end
-  namespace :public do
-    get 'home/top' =>'homes#top', as: '/'
-    get 'homes/about'
-  end
+  #namespace :public do
+  
+    #get 'home/top' =>'public/homes#top', as: '/'
+  get '/about' =>'public/homes#about', as: 'about'
+  #end
   namespace :public do
     resources :addresses, only: [:ibdex, :edit]
    # get 'addresses/index'

@@ -1,6 +1,8 @@
 class Public::HomesController < ApplicationController
   def top
     @items = Item.all
+    @item = Item.new
+    @items = Item.page(params[:page])
   end
   
   def  add_tax_sales_price
