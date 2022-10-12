@@ -12,7 +12,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 }
 
   root to: "public/homes#top"
-  
+
   namespace :admin do
     root to: "homes#top"
 
@@ -46,7 +46,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     #get 'items/update'
   end
   #namespace :public do
-  
+
     #get 'home/top' =>'public/homes#top', as: '/'
   get '/about' =>'public/homes#about', as: 'about'
   #end

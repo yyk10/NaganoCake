@@ -13,7 +13,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-<div class="row form-group">　
+<div class="row form-group">
 　<p>名前</p>
 　  <%= f.label :（姓） %>
     <%= f.text_field :first_name, autofocus: true %>
@@ -39,7 +39,7 @@
 <div>
    <%= f.label :住所 %>
     <%= f.text_field :address, autofocus: true %>
-    
+
 <div>
     <%= f.label :電話番号（ハイフンなし） %>
     <%= f.text_field :telephone_number, autofocus: true %>

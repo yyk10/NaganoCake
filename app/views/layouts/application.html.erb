@@ -52,7 +52,7 @@
             </li>
             <% elsif customer_signed_in? %>
             <li class="nav-item">
-              <%= link_to public_customer_path(Customer), class: 'nav-link text-white' do %>
+              <%= link_to public_customer_path(current_customer), class: 'nav-link text-white' do %>
                  マイページ
                <% end %>
             </li>

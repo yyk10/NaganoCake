@@ -2,7 +2,7 @@
    <div class="row">
    <div class style="padding: 50px;">
       <h3 class="border bg-light">
-        <div class="mx-3"><%= @customer.name %>さんの会員詳細</h3></div>
+        <div class="mx-3"><%= (@customer.last_name + @customer.first_name) %>さんの会員詳細</h3></div>
 
    </div>
    </div>
@@ -51,9 +51,9 @@
       <th>会員ステータス</th>
       <td>
        <% if @customer.is_deleted == true %>
-        <%= "有効" %>
-      <% else %>
         <%= "退会" %>
+      <% else %>
+        <%= "有効" %>
       <% end %>
       </td>
     </tr>
@@ -63,7 +63,7 @@
 </table>
  <%= link_to "編集する", edit_admin_customer_path(@customer.id) ,class: "btn btn-success" %>
 
- <!--%= link_to "注文履歴一覧を見る",-->
+ <%= link_to "注文履歴一覧を見る",admin_root_path, class: "btn btn-primary" %>
 </div>
 </div>
 
