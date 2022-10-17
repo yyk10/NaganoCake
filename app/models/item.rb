@@ -6,6 +6,12 @@ class Item < ApplicationRecord
    validates :is_active, presence: true
 
   belongs_to :genre
+  has_many :cart_item, dependent: :destroy
+
+
+  def add_tax_price
+    (self.price  * 1.08).round
+  end
 
   has_one_attached :profile_image
 
@@ -17,7 +23,5 @@ class Item < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def add_tax_price
-  (self.price * 1.10).round
-  end
+
 end

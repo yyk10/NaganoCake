@@ -51,22 +51,22 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
   get '/about' =>'public/homes#about', as: 'about'
   #end
   namespace :public do
-    resources :addresses, only: [:ibdex, :edit]
+    resources :addresses, only: [:ibdex, :edit, :create, :update, :destroy]
    # get 'addresses/index'
   #  get 'addresses/edit'
   end
   namespace :public do
-    resources :orders, only: [:new, :index, :show]
+    resources :orders, only: [:new, :index, :show, :confirm, :complete, :create]
     #get 'orders/new'
     #get 'orders/index'
     #get 'orders/show'
   end
   namespace :public do
-    resources :cart_items, only: [:index]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
    # get 'cart_items/index'
   end
   namespace :public do
-    resources :customers, only: [:show, :edit]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     #get 'customers/show'
     #get 'customers/edit'
   end
