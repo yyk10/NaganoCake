@@ -13,6 +13,10 @@ class Item < ApplicationRecord
     (self.price  * 1.08).round
   end
 
+	def total_price
+		good.price * quantity
+	end
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
