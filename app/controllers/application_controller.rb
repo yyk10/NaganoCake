@@ -15,6 +15,22 @@ class ApplicationController < ActionController::Base
  #before_action :authenticate_user!, except: [:login]
 
 
+ protect_from_forgery with: :exception
+
+  helper_method :current_order
+
+  def current_order
+    if current_customer
+      # ユーザーとカートの紐付け
+      current_order = current_customer.order || current_customer.create_order!
+    else
+      # セッションとカートの紐付け
+      current_order = Order.find_by(id: session[:order_id]) || Order.create
+      session[:order_id] ||= current_order.id
+    end
+    current_order
+  end
+
   protected
 
   def configure_permitted_parameters

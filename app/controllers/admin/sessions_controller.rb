@@ -4,28 +4,28 @@ class Admin::SessionsController < Devise::SessionsController
  before_action :configure_permitted_parameters, if: :devise_controller?
  skip_before_action :verify_authenticity_token
 
+  #def after_sign_in_path_for(resource)
+  #  admin_root_path
+#  end
+
+  #def after_sign_out_path_for(resource)
+  #  new_admin_session_path
+  #end
+
+
+
+
+
 protected
-  def after_sign_in_path_for(resource)
-    admin_root_path
-  end
-
-  def after_sign_out_path_for(resource)
-    new_admin_session_path
-  end
-
-
-
-
-
- # def after_sign_in_path_for#(resource)
-   # public_items_index_path
+  def after_sign_in_path_for#(resource)
+    public_items_index_path
     #user_path(resource)
-  #end
+  end
 
- # def after_sign_out_path_for#(resource)
-   # public_homes_about_path
-    #root_path
-  #end
+  def after_sign_out_path_for#(resource)
+   #public_homes_about_path
+    root_path
+  end
 
  # protected
 

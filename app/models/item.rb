@@ -10,12 +10,16 @@ class Item < ApplicationRecord
 
 
   def add_tax_price
-    (self.price  * 1.08).round
+    (self.price  * 1.1).round
   end
 
-	def total_price
-		good.price * quantity
-	end
+	def taxin_price
+        price*1.1
+  end
+
+  def with_tax_price
+    (price * 1.1).floor
+  end
 
   has_one_attached :profile_image
 
