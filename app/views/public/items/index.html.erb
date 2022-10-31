@@ -1,13 +1,13 @@
-    <h1>商品一覧(全<%= @items.count %>件)</h1>
-    
+    <h2><strong>商品一覧</strong>(全<%= @items.count %>件)</h2>
+
      <% @items.each do |item| %>
      <%= link_to public_item_path(item.id) do %>
-        <!--%= image_tag @item.get_profile_image(100,100) %-->
+        <%= image_tag item.get_profile_image(100,100) %>
       <%= item.name %>
-      
-      <%= item.add_tax_price.to_s(:dalimited) %>
+
+      <p>¥<%= item.add_tax_price.to_s(:dalimited) %></p>
      <% end %>
-   
+
      <% end %>
 
 

@@ -16,16 +16,16 @@ class Admin::SessionsController < Devise::SessionsController
 
 
 
-protected
-  def after_sign_in_path_for#(resource)
-    public_items_index_path
+#protected
+  #def after_sign_in_path_for#(resource)
+   # admin_root_path
     #user_path(resource)
-  end
+  #end
 
-  def after_sign_out_path_for#(resource)
+  #def after_sign_out_path_for#(resource)
    #public_homes_about_path
-    root_path
-  end
+   # root_path
+  #end
 
  # protected
 

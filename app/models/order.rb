@@ -4,8 +4,9 @@ class Order < ApplicationRecord
 
   enum status: { waiting_for_paymant: 0, payment_confirmation: 1, production: 2, shipping_preparation: 3, shipped: 4 }
 
-belongs_to :customers
+belongs_to :customer
 has_many :order_details,dependent: :destroy
+belongs_to :item
 
  def self.cart_items_total_price(cart_products)
     array = []

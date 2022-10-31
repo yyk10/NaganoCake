@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(email: "cake@cake",password: "nagano")
+
+Customer.create!(postage: "800")

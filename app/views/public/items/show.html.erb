@@ -1,12 +1,19 @@
 
+<div class="container">
+  <div class style="padding: 50px;">
+   <div class="row">
+
+     <div class ="col-md-7">
+      <%= image_tag @item.get_profile_image(500,500) %>
+     </div>
+     <div class ="col-md-5">
 
 
-  <!--%= @item.get_profile_image(100,100) %-->
-  <%= @item.name %><br>
+  <h2><%= @item.name %></h2>
 
-  <%= @item.introduction %><br>
+  <h3><%= @item.introduction %></h3>
 
-  <h2>¥<%= @item.add_tax_price.to_s(:dalimited) %><span>(税込み)</span></h2>
+  <h2>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込み)</h2>
  <% if customer_signed_in? %>
   <%= form_with model: @cart_item ,url: public_cart_items_path, local: true do |f| %>
   <%= f.hidden_field :item_id, :value => "item.id" %>
@@ -16,3 +23,7 @@
   <% end %>
 <% end %>
 
+</div>
+</div>
+</div>
+</div>

@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -67,8 +69,8 @@
                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_customer_session_path, class: 'nav-link text-white' do %>
-                ログアウト
+              <%= link_to destroy_customer_session_path, class: 'nav-link text-white', method: :delete do %>
+               ログアウト
                <% end %>
             </li>
 
