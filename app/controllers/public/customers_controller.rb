@@ -2,8 +2,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
   end
-  
-  def withdrawal
+
+  def withdraw
     @customer = Customer.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)
@@ -13,6 +13,19 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+    @customer.update (customer_params)
+    redirect_to public_customer_path(@customer.id), notice: 'Customer information updated successfully'
+    #else
+    #if @item.update(item_params)
+     #   redirect_to admin_item_path(@item.id)
+    #else
+    #render :edit , status: :unprocessable_entity
+
   end
 
 
