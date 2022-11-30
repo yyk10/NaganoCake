@@ -11,10 +11,10 @@
   <div class="row">
 
 
+<div class="offset-md-3">
 
-
-       <table width="650px">
-  <%= form_with model: [:admin, @item],local: true do |f| %>
+       <table width="800px">
+  <%= form_with model: [:admin, @item] do |f| %>
        <!--% if @item.errors.any? %>
       <div id="error_explanation">
      <h3>< %= pluralize(@item.errors.count, "error") %> prohibited this book from being saved:</h3>
@@ -61,14 +61,19 @@
       <%= f.label :is_active, '販売停止中', value: false %>
 
      </td>
-     </div>
 
       </tr>
      </table>
-
-
-      <div><%= f.submit "変更を保存",class: "btn btn-success" %>
+    </div>
+    </div>
+   <div class="row">
+       <div class= "offset-md-5">
+          <div class= "text-size:30px">
+      <%= f.submit "変更を保存" ,class: "btn btn-success" %>
+      </div>
      <% end %>
+     </div>
      </div>
     </div>
     </div>
+
