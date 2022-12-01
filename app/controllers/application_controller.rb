@@ -9,11 +9,20 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+   root_path
   end
 
  #before_action :authenticate_user!, except: [:login]
 
+  def after_sign_in_path_for(resource_or_scope)
+    return new_admin_user_session_path if resource_or_scope == :admin_user
+    admin_root_path
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    return new_admin_user_session_path if resource_or_scope == :admin_user
+    new_admin_session_path
+  end
 
  protect_from_forgery with: :exception
 
