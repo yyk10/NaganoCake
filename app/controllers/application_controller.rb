@@ -5,10 +5,12 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
+    return new_public_user_session_path if resource_or_scope == :public_user
     public_items_path(resource)
   end
 
   def after_sign_out_path_for(resource)
+     return new_public_user_session_path if resource_or_scope == :public_user
    root_path
   end
 

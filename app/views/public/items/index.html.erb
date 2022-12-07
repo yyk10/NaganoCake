@@ -1,4 +1,11 @@
+    <div class="container">
+   <div class="row">
+   <div class style="padding: 50px;">
     <h2><strong>商品一覧</strong>(全<%= @items.count %>件)</h2>
+    </div>
+   </div>
+ </div>
+
 
      <% @items.each do |item| %>
      <%= link_to public_item_path(item.id) do %>

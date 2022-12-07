@@ -24,13 +24,7 @@
    <%= (current_customer.postal_code)+(current_customer.address) %>
    <%= (current_customer.first_name) + (current_customer.last_name) %>
    <div>
-    <%= f.radio_button :address_number, 2 %>
-   <%= f.label :address_number_2, "登録先の住所" %>
-   <%= f.select :order_id, Order.all.map { |order| [order.name, order.id] },{prompt: "--選択してください--"} %>
-    <!--%= f.collection_select(:registered, current_customer.addresses.all, :id, :address %>
-<!-- registered として current_customer.address.all で取得した id を送ります。
-     ユーザーに表示して選択してもらうのは address です -->
-     <div>
+  
   <%= f.radio_button :address_number, 3 %>
  <%= f.label :address_number_3, "新しいお届け先" %>
  <div>
