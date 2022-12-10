@@ -3,23 +3,24 @@
   <div class style="padding: 50px;">
    <div class="row">
 
-     <div class ="col-md-7">
+     <div class ="col-md-6">
       <%= image_tag @item.get_profile_image(500,500) %>
      </div>
-     <div class ="col-md-5">
+     <div class ="col-md-6">
 
 
   <h2><%= @item.name %></h2>
-
-  <h3><%= @item.introduction %></h3>
-
+  <div class style="padding: 10px;">
+  <h4><%= @item.introduction %></h4>
+  </div>
   <h2>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込み)</h2>
  <% if customer_signed_in? %>
   <%= form_with model: @cart_item ,url: public_cart_items_path, local: true do |f| %>
   <%= f.hidden_field :item_id, :value => "item.id" %>
   <%= f.select :amount, *[1..30],  placeholder: "個数を選択" %>
-
+<div class style="padding: 10px;">
   <%= f.submit "カートに入れる",class: "btn btn-success" %>
+</div>
   <% end %>
 <% end %>
 

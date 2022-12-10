@@ -6,15 +6,23 @@
    </div>
  </div>
 
+<div class="container">
 
-     <% @items.each do |item| %>
-     <%= link_to public_item_path(item.id) do %>
-        <%= image_tag item.get_profile_image(100,100) %>
-      <%= item.name %>
+<div class="row">
+ <% @items.each do |item| %>
 
-      <p>¥<%= item.add_tax_price.to_s(:dalimited) %></p>
+ <div class="col-md-3">
+
+   <%= link_to public_item_path(item.id) do %>
+    <%= image_tag item.get_profile_image(100,100) %>
+
+   <div><%= item.name %></div>
+      <div>¥<%= item.add_tax_price.to_s(:dalimited) %> </div>
+     <% end %>
+     <%= paginate @items %>
+</div>
      <% end %>
 
-     <% end %>
+</div>
 
-
+</div>

@@ -11,13 +11,12 @@
 
  <div class="container">
    <div class="row">
-     <div class="col-4">
-    <%= image_tag @item.get_profile_image(100,100) %>
+     <div class="col-5">
+    <%= image_tag @item.get_profile_image(300,300) %>
 
      </div>
-
+<div class="col-7">
 <table class="table">
-  <thead>
     <tr>
       <th>商品名</th>
       <td><%= @item.name %></td>
@@ -37,17 +36,27 @@
     <tr>
       <th>販売ステータス</th>
       <td>
+        <div class="text-success">
          <% if @item.is_active == true %>
-        <%= "販売中" %>
+        <%= "販売中" %> </div>
       <% else %>
-        <%=  "販売停止中" %>
+      <div class="text-secondary">
+        <%=  "販売停止中" %></div>
       <% end %>
+
       </td>
     </tr>
-  </thead>
-
-
 </table>
- <%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
 </div>
+</div>
+<div class style="padding: 30px;">
+  <div class="row">
+
+   <div class="offset-md-5">
+
+<%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
+ </div>
+ </div>
+ </div>
+
 </div>

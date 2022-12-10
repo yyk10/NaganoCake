@@ -36,7 +36,7 @@
       </tr>
       <tr>
       <th><%= f.label :商品説明 %></th>
-      <td><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"" %></td>
+      <td><%= f.text_area :introduction, autofocus: true, id:"introduction",placeholder:"" ,:size=>"60x5" %></td>
       </tr>
 
       <tr>
@@ -68,8 +68,8 @@
     </div>
    <div class="row">
        <div class= "offset-md-5">
-          <div class= "text-size:30px">
-      <%= f.submit "変更を保存" ,class: "btn btn-success" %>
+          <div class= "text-size:50px">
+      <%= f.submit "変更を保存",class: "btn btn-success btn-lg" %>
       </div>
      <% end %>
      </div>
