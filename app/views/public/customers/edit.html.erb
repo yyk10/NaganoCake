@@ -31,7 +31,7 @@
       <td><%= f.text_area :address, autofocus: true, id:"address",placeholder:"",:size=>"30"  %></td>
       </tr>
       <tr>
-      <th><%= f.label :電話番号 %></th> 
+      <th><%= f.label :電話番号 %></th>
       <td><%= f.text_field :telephone_number, autofocus: true, id:"telephone_number",placeholder:"" %></td>
       </tr>
       <tr>
@@ -39,18 +39,17 @@
       <td><%= f.text_field :email, autofocus: true, id:"email",placeholder:"" %></td>
         </tr>
        </table>
+        <div class="offset-md-3">
+             <div class style="padding: 25px;">
+       <th><%= f.submit "編集内容を保存",class: "btn btn-success" %></th>
+       <td><%= link_to "退会する", public_unsubscribe_path, class:"btn btn-danger" %></td>
        </div>
          </div>
-  
-  
-    <div class=" offset-md-2">
-      <div class style="padding: 20px;">
-       <%= f.submit "編集内容を保存",class: "btn btn-success" %>
-    
-    <% end %>
- 
-    <%= link_to "退会する", public_unsubscribe_path, class:"btn btn-danger" %>
- </div>
-</div>
-</div>
-</div>
+  </div>
+
+         <% end %>
+    </div>
+   </div>
+
+
+

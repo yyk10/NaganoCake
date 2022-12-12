@@ -4,27 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 
-  def after_sign_in_path_for(resource)
-    return new_public_user_session_path if resource_or_scope == :public_user
-    public_items_path(resource)
-  end
 
-  def after_sign_out_path_for(resource)
-     return new_public_user_session_path if resource_or_scope == :public_user
-   root_path
-  end
-
- #before_action :authenticate_user!, except: [:login]
-
-  def after_sign_in_path_for(resource_or_scope)
-    return new_admin_user_session_path if resource_or_scope == :admin_user
-    admin_root_path
-  end
-
-  def after_sign_out_path_for(resource_or_scope)
-    return new_admin_user_session_path if resource_or_scope == :admin_user
-    new_admin_session_path
-  end
 
  protect_from_forgery with: :exception
 
@@ -43,6 +23,24 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+ def after_sign_in_path_for(resource)
+    if customer_signed_in?
+        root_path#login後遷移path要変更確認用なので
+    else
+      admin_root_path #login後遷移path確認用なので要変更
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    if resource == :admin
+       new_admin_session_path
+    else root_path
+    end
+
+  end
+
+ #before_action :authenticate_user!, except: [:login]
+
 
   def configure_permitted_parameters
     added_attrs = [ :email, :encrypted_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number]

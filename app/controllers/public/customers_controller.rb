@@ -17,10 +17,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    @customer.update (customer_params)
-    redirect_to public_customer_path(@customer.id), notice: 'Customer information updated successfully'
-    #else
+      @customer = current_customer
+     if @customer.update(customer_params)
+     flash[:update] = "会員情報を編集しました."
+     redirect_to public_customer_path(@customer.id)
+     else
+     render 'edit'
+     end
     #if @item.update(item_params)
      #   redirect_to admin_item_path(@item.id)
     #else

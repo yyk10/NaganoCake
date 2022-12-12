@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
      # @admin = @item.admin
      # @genre = @item.genre_id
    if @item.save
-       flash[:notice] = "Item was successfully created"
+       flash[:notice] = "新しい商品を追加しました"
        redirect_to admin_item_path(@item.id)
    else
       @items = Item.all
@@ -33,15 +33,15 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update (item_params)
-    redirect_to admin_item_path(@item.id), notice: 'Item information updated successfully'
-    #else
+    if @item.update(item_params)
+    flash[:update]  = "商品情報を編集しました."
+    redirect_to admin_item_path(@item.id)
+    else
     #if @item.update(item_params)
      #   redirect_to admin_item_path(@item.id)
     #else
-    #render :edit , status: :unprocessable_entity
-
-
+    render 'show'
+    end
   end
 
   private

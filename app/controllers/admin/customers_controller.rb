@@ -14,13 +14,15 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update (customer_params)
-    redirect_to admin_customer_path(@customer.id), notice: 'Item information updated successfully'
+    if @customer.update (customer_params)
+      flash[:success] = "Customer was successfully updated"
+    redirect_to admin_customer_path
     #else
     #if @item.update(item_params)
      #   redirect_to admin_item_path(@item.id)
-    #else
-    #render :edit , status: :unprocessable_entity
+    else
+    render :edit #, status: :unprocessable_entity
+    end
   end
   private
 
