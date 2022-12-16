@@ -9,36 +9,43 @@
  </div>
  <div class ="container">
  <div class ="row">
+     
    <%= form_with model: @order, url:public_orders_confirm_path ,local: true do |f| %>
    <h4><strong>支払い方法</strong></h4>
-     <%= f.radio_button :is_active, true %>
-      <%= f.label :payment_method, 'クレジットカード', value: true %>
-
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :payment_method, '銀行振込', value: false %>
+   <div>
+     <h5><%= f.radio_button :is_active, true %>
+      <%= f.label :payment_method, 'クレジットカード', value: true %></h5>
+      <h5><%= f.radio_button :is_active, false %>
+      <%= f.label :payment_method, '銀行振込', value: false %></h5>
 
   <h4><strong>お届け先</strong></h4>
-   <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-   <%= f.label :address_number_1, "ご自身の住所" %>
+   <h5><%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+   <%= f.label :address_number_1, "ご自身の住所" %></h5>
 
-   <%= (current_customer.postal_code)+(current_customer.address) %>
-   <%= (current_customer.first_name) + (current_customer.last_name) %>
+   <h5>〒<%= (current_customer.postal_code)+(current_customer.address) %></h5>
+   <h5><%= (current_customer.first_name) + (current_customer.last_name) %></h5>
    <div>
   
-  <%= f.radio_button :address_number, 3 %>
- <%= f.label :address_number_3, "新しいお届け先" %>
- <div>
- <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-  <%= f.text_field :postal_code %>
- <div>
- <%= f.label :address, "住所" %>
-  <%= f.text_field :address %>
-  <div>
-  <%= f.label :name, "宛名" %>
-  <%= f.text_field :name %>
+  <h5> <%= f.radio_button :address_number, 2 %>
+ <%= f.label :address_number_2, "新しいお届け先" %></h5>
+ 
+    <table>
+    <tr>
+  <th scope="col"><h5><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+   <td><%= f.text_field :postal_code ,class:"col-lg-7" %></h5></td>
+   </tr>
+ <tr>
+ <th scope="col"><h5> <%= f.label :address, "住所" %></th>
+  <td><%= f.text_field :address ,  size:50 %></h5></td>
+  </tr>
+  <tr>
+ <th scope="col"><h5><%= f.label :name, "宛名" %></th>
+  <td><%= f.text_field :name ,class:"col-lg-7" %></h5></td>
+  </tr>
+  </table>
 <!-- 選んでもらったデータを送ります -->
 <div class ="text-center">
-  <%= f.submit "確認画面へ進む" %>
+  <h5> <%= f.submit "確認画面へ進む" %></h5>
  </div>
  </div>
 

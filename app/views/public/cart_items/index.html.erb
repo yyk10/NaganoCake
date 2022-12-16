@@ -1,16 +1,22 @@
 <div class="container">
+     <div class style="padding: 50px;">
    <div class="row">
-   <div class style="padding: 50px;">
+   <div class="mx-3">
       <h3 class="border bg-light">
-        <div class="mx-3">ショッピングカート</h3>
-      <%= link_to public_cart_items_destroy_all_path, method: :delete do %>
-		      <button class="btn btn-danger ">カートを空にする</button> </div>
+       ショッピングカート</h3></div>
+        <div class="offset-md-6">
+        <h3 class="text-right">
+		  <%= link_to public_cart_items_destroy_all_path, method: :delete do %>
+		  <button class="btn btn-danger">カートを空にする</button></h3>
       <% end %>
+      </div>
+      </div>
    </div>
    </div>
  </div>
-　<div class="container">
+
 　  <div class="row">
+　      <div class="offset-md-1 col-md-10">
  <table class="table">
    　　<thead>
   <tr>
@@ -38,24 +44,30 @@
         <%= link_to "削除する", cart_item_path(@cart_item.id),class: "btn btn-sm btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
   </td>
    </tr>
-
+   <% end %>
  </tbody>
  </table>
+ </div>
 
+ </div>
+ <div class style="padding: 30px;">
+<div class="row">
 
-
+    <div class="offset-md-2 md-4">
+    <%= link_to "買い物を続ける",public_items_path,class: "btn btn-sm btn-primary" %></div>
+    <div class="offset-md-5">
  <table class="table">
      <th scope="col">合計金額</th>
-     <th scope="col"><%= @total.price.to_s(:delimited)%>円</th>
+     <td></td>
+     <td><%= @total_price.to_s(:delimited)%>円</td>
  </table>
-   <% end %>
-   </div>
+</div>
+ </div>
+</div>
 
- </div>
- </div>
- <div class ="container">
+
+
  <div class="row">
- <%= link_to "買い物を続ける",public_items_path,class: "btn btn-sm btn-success" %>
- <%= link_to "情報入力に進む",new_public_order_path %>
- </div>
+ <div class="offset-md-5">
+ <%= link_to "情報入力に進む",new_public_order_path ,class: "btn btn-sm btn-success" %></div>
  </div>
