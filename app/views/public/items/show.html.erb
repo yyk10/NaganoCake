@@ -16,7 +16,7 @@
   <h2>¥<%= @item.add_tax_price.to_s(:dalimited) %>(税込み)</h2>
  <% if customer_signed_in? %>
   <%= form_with model: @cart_item ,url: public_cart_items_path, local: true do |f| %>
-  <%= f.hidden_field :item_id, :value => "item.id" %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.select :amount, *[1..30],  placeholder: "個数を選択" %>
 <div class style="padding: 10px;">
   <%= f.submit "カートに入れる",class: "btn btn-success" %>

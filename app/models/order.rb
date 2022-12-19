@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 belongs_to :customer
 has_many :order_details,dependent: :destroy
 belongs_to :item
-has_many :cart_item,dependent: :destroy
+
 
  def self.cart_items_total_price(cart_products)
     array = []

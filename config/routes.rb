@@ -65,6 +65,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
   namespace :public do
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
    # get 'cart_items/index'
   end
   namespace :public do
