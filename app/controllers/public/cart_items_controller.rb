@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-   current_customer.cart_items.find(params[:cart_item]).destroy
+   current_customer.cart_items.find(params[:id]).destroy
    redirect_to public_cart_items_path
   end
 

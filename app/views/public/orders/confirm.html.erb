@@ -24,16 +24,17 @@
   </tr>
   <tr>
   <% @cart_items.each do |cart_item| %>
-   <td><!--%= @item.get_profile_image(100,100) %--><%= cart.item.name %> <!-- 商品名 --></td>
-   <td><%= (cart.item.price).to_s(:delimited) %>　<!-- 金額 --></td>
-   <td><%= cart.amount %> <!-- 個数 --></td>
-   <td><%= (cart.item.price*cart.amount).to_s(:delimited) %> <!-- 小計 --></td>
+   <td><!--%= @item.get_profile_image(100,100) %--><%= cart_item.item.name %> <!-- 商品名 --></td>
+   <td><%= (cart_item.item.price).to_s(:delimited) %>　<!-- 金額 --></td>
+   <td><%= cart_item.amount %> <!-- 個数 --></td>
+   <td><%= (cart_item.item.price*cart_item.amount).to_s(:delimited) %> <!-- 小計 --></td>
   </tr>
 
 <% end %>
   </table>
   </div>
   <div class = "col-3">
+  <%= form_with model: @order, url: public_orders_path, local: true do |f| %>
 <table class ="table">
   <tr>
     <th>送料</th>
@@ -41,18 +42,19 @@
   </tr>
   <tr>
     <th>商品合計</th>
-    <td><%= @price.to_s(:delimited) %></td>
+    <td><%= @total_price.to_s(:delimited) %></td>
   </tr>
   <tr>
     <th>請求金額</th>
-    <td><%= (@price + 800).to_s(:delimited) %></td>
+    <td><%= (@total_price + 800).to_s(:delimited) %></td>
   </tr>
  </table>
  </div>
  </div>
  <div class ="row">
-<p><strong>支払い方法</strong></p>
-<%= @order.payment_method %>
+<p><strong>支払い方法</strong>
+<%= @order.payment_method_i18n %>
+  <%= f.hidden_field :payment_method %></p>
 </div>
 <div class ="row">
 <p><strong>お届け先</strong></p>
@@ -60,11 +62,11 @@
 
 </div>
 <!-- ユーザーには注文確定ボタンだけ表示します -->
-<%= form_with model: @order, url: public_orders_path, local: true do |f| %>
+
   <%= f.hidden_field :name %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :price, value: @price %>
-  <%= f.hidden_field :payment_method %>
+
   <%= f.submit "注文を確定する" %>
 <% end %>
 

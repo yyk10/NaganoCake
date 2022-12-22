@@ -13,10 +13,11 @@
    <%= form_with model: @order, url:public_orders_confirm_path ,local: true do |f| %>
    <h4><strong>支払い方法</strong></h4>
    <div>
-     <h5><%= f.radio_button :is_active, true %>
-      <%= f.label :payment_method, 'クレジットカード', value: true %></h5>
-      <h5><%= f.radio_button :is_active, false %>
-      <%= f.label :payment_method, '銀行振込', value: false %></h5>
+      <h5><%= f.radio_button :payment_method,Order.payment_methods.key(0)  %>
+    <%= f.label :payment_method_credit_card,  Order.payment_methods_i18n[:credit_card] %>  </h5>
+
+     <h5> <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>   </h5>
 
   <h4><strong>お届け先</strong></h4>
    <h5><%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->

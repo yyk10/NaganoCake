@@ -43,7 +43,10 @@
   <% end %>
   <td><%= cart_item.subtotal%></td>
   <td>
-        <%#= link_to "削除する", cart_item_path(@cart_item.id),class: "btn btn-sm btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+   <%= link_to public_cart_items_path(@cart_item.id), method: :delete do %>
+              <button class="btn btn-danger">削除する</button>
+    <% end %>
+        <%#= link_to "削除する", public_cart_items_path(@cart_item.id),class: "btn btn-sm btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
   </td>
    </tr>
    <% end %>
