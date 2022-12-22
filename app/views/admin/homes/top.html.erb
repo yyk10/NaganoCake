@@ -19,20 +19,20 @@
     </tr>
   </thead>
    <tbody>
-     <!--% @orders.each do |order| %>
+     <% [:public,@orders].each do |order| %>
     <tr>
-     <td>< %= order.id  %> </td>
-     <td>< %= order.name %></td>
-     <td>< %= order.amount %></td>
+     <td><%= link_to admin_order_path(:id) do %><%= order.created_at.to_s(:datetime_jp) %><% end %></td>
+     <td><%= order.name %></td>
+     <td><%= order.amount %></td>
      <td>
-     < %= order.status %>
-        < % end %></td>
+     <%= order.status %>
+    <% end %></td>
 
      </td>
     </tr>
 
    </tbody>
    </table>
-    < %= paginate @orders %>
+    <%= paginate @orders %>
   </div>
 </div>

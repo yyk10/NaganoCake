@@ -21,14 +21,14 @@
 
   <h4><strong>お届け先</strong></h4>
    <h5><%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-   <%= f.label :address_number_1, "ご自身の住所" %></h5>
+   <%= f.label :address, "ご自身の住所" %></h5>
 
    <h5>〒<%= (current_customer.postal_code)+(current_customer.address) %></h5>
    <h5><%= (current_customer.first_name) + (current_customer.last_name) %></h5>
    <div>
   
   <h5> <%= f.radio_button :address_number, 2 %>
- <%= f.label :address_number_2, "新しいお届け先" %></h5>
+ <%= f.label :address, "新しいお届け先" %></h5>
  
     <table>
     <tr>

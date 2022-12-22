@@ -27,13 +27,13 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items.destroy_all
     redirect_to public_orders_complete_path
-    
+
 # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
   else
     render :new
   end
   end
-  
+
 
 # new 画面から渡ってきたデータをユーザーに確認してもらいます
 def confirm
@@ -42,30 +42,29 @@ def confirm
    @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
 
   if params[:order][:address_number] == "1"
-# view で定義している address_number が"1"だったときにこの処理を実行します
-# form_with で @order で送っているので、order に紐付いた address_number となります。以下同様です
-# この辺の紐付けは勉強不足なので gem の pry-byebug を使って確認しながら行いました
-    @order.name = current_customer # @order の各カラムに必要なものを入れます
+    @order.name = current_customer.first_name + " " + current_customer.last_name
     @order.address = current_customer.address
+    @order.postal_code = current_customer.postal_code
    render 'confirm'
+
   elsif params[:order][:address_number] == "2"
-# view で定義している address_number が"2"だったときにこの処理を実行します
   @address_new = current_customer.addresses.new(address_params)
-  if @address_new.save 
-   @order.postcode = @address_new.postcode
+  if @address_new.save
+   @order.postal_code = @address_new.postal_code
    @order.name = @address_new.name
    @order.address = @address_new.address
+   render 'confirm'
   else
-      render :new
+      render 'new'
 # ここに渡ってくるデータはユーザーで新規追加してもらうので、入力不足の場合は new に戻します
   end
-  else
-    redirect_to new_public_order_path # ありえないですが、万が一当てはまらないデータが渡ってきた場合の処理です
+
   end
+
   @cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
   @price = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
 # 合計金額を出す処理です sum_price はモデルで定義したメソッドです
-end
+ end
 
 
   def index
@@ -77,6 +76,9 @@ end
    # @order_details = @order.order_details.all
   end
 
+  def complete
+  end
+
   private
 
   def order_params
@@ -84,7 +86,7 @@ end
   end
 
   def address_params
-    params.require(:order).permit(:name, :address)
+    params.require(:order).permit(:name, :address, :postal_code)
   end
 
 end

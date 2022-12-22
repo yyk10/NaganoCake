@@ -58,7 +58,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
   namespace :public do
     resources :orders, only: [:new, :index, :show, :complete, :create]
     post 'orders/confirm'
-    get 'orders/complete' => "orders#complete"
+    post 'orders/complete' => "orders#complete"
     #get 'orders/index'
     #get 'orders/show'
   end
