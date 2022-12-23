@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+
+     before_action :authenticate_customer!
   def index
      @cart_item = CartItem.new
      @cart_items = CartItem.all
@@ -22,7 +24,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def update
-   @cart_item = CartItem.find(params[:item_id])
+   @cart_item = CartItem.find(params[:id])
     if params[:cart_item][:amount] == "0"
       @cart_item.destroy
       redirect_to public_cart_items_path
