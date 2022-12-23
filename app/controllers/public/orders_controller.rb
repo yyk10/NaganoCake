@@ -37,10 +37,12 @@ class Public::OrdersController < ApplicationController
 
 # new 画面から渡ってきたデータをユーザーに確認してもらいます
 def confirm
+    
   @cart_items = current_customer.cart_items
   @order = Order.new(order_params)
-   @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
-
+  #binding.pry
+  @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
+  
   if params[:order][:address_number] == "1"
     @order.name = current_customer.first_name + " " + current_customer.last_name
     @order.address = current_customer.address
@@ -48,21 +50,24 @@ def confirm
    render 'confirm'
 
   elsif params[:order][:address_number] == "2"
-  @address_new = current_customer.addresses.new(address_params)
-  if @address_new.save
-   @order.postal_code = @address_new.postal_code
-   @order.name = @address_new.name
-   @order.address = @address_new.address
+   @address_new = current_customer.addresses.new(address_params)
+   @address.address = params[:order][:address]
+   @address.name = params[:order][:name]
+   @address.postal_code = params[:order][:postal_code]
+   @address.customer_id = current_customer.id
+  if @address.save
+   @order.postal_code = @address.postal_code
+   @order.name = @address.name
+   @order.address = @address.address
    render 'confirm'
   else
       render 'new'
 # ここに渡ってくるデータはユーザーで新規追加してもらうので、入力不足の場合は new に戻します
   end
-
   end
 
-  @cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
-  @price = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+  #@cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
+  #@price = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
 # 合計金額を出す処理です sum_price はモデルで定義したメソッドです
  end
 
