@@ -45,6 +45,10 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     #get 'items/edit'
     #get 'items/update'
   end
+  
+  namespace :admin do
+    resources :order_details, only: [:update]
+  end
   #namespace :public do
 
     #get 'home/top' =>'public/homes#top', as: '/'
@@ -63,8 +67,9 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
     #get 'orders/show'
   end
   namespace :public do
+      delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+  
 
    # get 'cart_items/index'
   end

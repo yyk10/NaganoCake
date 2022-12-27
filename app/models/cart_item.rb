@@ -1,8 +1,8 @@
 class CartItem < ApplicationRecord
 
-    belongs_to :item ,dependent: :destroy
+    belongs_to :item
     belongs_to :customer
-   
+
     validates :amount, presence: true
 
    def sum_price # 実際に作成したサイトは税金も算出していたのでメソッドを記載していました
@@ -13,10 +13,10 @@ class CartItem < ApplicationRecord
     item.with_tax_price * amount
    end
 
-    def self.cart_items_total_price(cart_items)
-    array = []
+   def self.cart_items_total_price(cart_items)
+   array = []
     cart_items.each do |cart_item|
-      array << cart_item.item.price * cart_item.amount
+    array << cart_item.item.price * cart_item.amount
     end
     return (array.sum * 1.1).floor
     end
@@ -28,5 +28,5 @@ class CartItem < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
    end
-  
+
 end

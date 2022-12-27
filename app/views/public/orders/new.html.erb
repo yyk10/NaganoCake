@@ -9,7 +9,7 @@
  </div>
  <div class ="container">
  <div class ="row">
-     
+
    <%= form_with model: @order, url:public_orders_confirm_path ,local: true do |f| %>
    <h4><strong>支払い方法</strong></h4>
    <div>
@@ -20,16 +20,16 @@
     <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>   </h5>
 
   <h4><strong>お届け先</strong></h4>
-   <h5><%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-   <%= f.label :address, "ご自身の住所" %></h5>
+   <h5><%= f.radio_button :select_address, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+   <%= f.label :select_address, "ご自身の住所" %></h5>
 
    <h5>〒<%= (current_customer.postal_code)+(current_customer.address) %></h5>
    <h5><%= (current_customer.first_name) + (current_customer.last_name) %></h5>
    <div>
-  
-  <h5> <%= f.radio_button :address_number, 2 %>
- <%= f.label :address, "新しいお届け先" %></h5>
- 
+
+  <h5> <%= f.radio_button :select_address, 2 %>
+ <%= f.label :select_address, "新しいお届け先" %></h5>
+
     <table>
     <tr>
   <th scope="col"><h5><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
