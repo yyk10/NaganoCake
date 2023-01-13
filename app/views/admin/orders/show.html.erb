@@ -1,4 +1,4 @@
-div class="container">
+<div class="container">
    <div class="row">
    <div class style="padding: 50px;">
       <h3 class="border bg-light">
@@ -19,7 +19,7 @@ div class="container">
     </tr>
     <tr>
      <th>注文日</th>
-     <td><%= @order. %></td>
+     <td><%= @order.created_at.to_s(:datetime_jp) %></td>
     </tr>
     <tr>
       <th>配送先</th>
@@ -27,42 +27,78 @@ div class="container">
     </tr>
     <tr>
       <th>支払方法</th>
-      <td><%= @order.payment_method %></td>
+      <td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
       <th>注文ステータス</th>
       <td>
-       <%= select :status,:name,Order.statuses.keys.to_a %>
-       <%= select :status,:name,Order.statuses.values.to_a %>
-      </td>
-       <%= form_with model: @customer do |f| %>
-       <%= f.submit "更新する",class: "btn btn-success" %>
+       <%= form_with model: [:admin, @order],local: true do |f| %>
+       <%= select :order,:status,Order.statuses.keys.to_a.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
+       <%= f.hidden_field :status, :value => @order.status %>
+       <%#= select :status,:name,Order.statuses.values.to_a %></td>
+
+       <td><%= f.submit "更新する",class: "btn btn-success" %>
        <% end %>
-      <td></td>
+      </td>
     </tr>
   </thead>
 </table>
 
+<div class ="col-md-8">
 <table>
      <% @order_details.each do |order_details| %>
 　<tr>
     <th>商品名</th>
+    <th></th>
     <th>単価（税込）</th>
+    <th></th>
     <th>数量</th>
+    <th></th>
     <th>小計</th>
-
+    <th></th>
     <th>製作ステータス</th>
+    <th></th>
    </tr>
   <tr>
+    <td><%= order_details.item.name %></td>
     <td></td>
-    <td><%= @order_details.price %></td>
-    <td><%= @order_details.amount %></td>
-    <td><%=　%></td>
+    <td><%= order_details.price %></td>
+    <td></td>
+    <td><%= order_details.amount %></td>
+    <td></td>
+    <td><%= order_details.subtotal %></td>
+    <% end %>
+    <td></td>
+
     <td>
-      <%= form_with model: @order_details do |f| %>
+      <%= form_with model: @order_detail, local: true do |f| %>
+      <%= select :status,:name,OrderDetail.making_statuses.keys.to_a.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+      <%#= f.hidden_field :status, :value => @order_detail.making_status %>
+     </td>
+     <td>
       <%= f.submit "更新する",class: "btn btn-success" %>
       <% end %>
     </td>
   </tr>
 </table>
+</div>
+
+<div class ="col-md-4">
+    <table>
+        <tr>
+        <th>商品合計</th>
+        <td><%# @total_price.price %>円</td>
+        </tr>
+        <tr>
+        <th>送料</th>
+        <td>800</td>
+        </tr>
+        <tr>
+            <th>請求合計金額</th>
+            <td><%# @total_price.price + 800 %>円</td>
+        </tr>
+    </table>
+
+</div>
+
 

@@ -7,20 +7,20 @@ class Admin::OrderDetailsController < ApplicationController
     @order_details = @order.order_details
     @order_detail.update(order_detail_params)
 
-    if @order_details.where(make_status: "製作中").count >= 1
-      @order.status = "製作中"
+   if #@order_details.where(making_status: "製作中").count >= 1
+    #  @order.status = "製作中"
       @order.save
     end
 
-     if @order.order_details.count == @order_details.where(make_status: "製作完了").count
-       @order.status = "発送準備中"
-       @order.save
-     end
+    # if @order.order_details.count == @order_details.where(making_status: "製作完了").count
+     #  @order.status = "発送準備中"
+      # @order.save
+     #end
     redirect_to admin_order_path(@order_detail.order.id)
   end
    private
 
   def order_detail_params
-    params.require(:order_detail).permit(:orders_id, :items_id, :price, :amount, :make_status)
+    params.require(:order_detail).permit(:orders_id, :items_id, :price, :amount, :making_status)
   end
 end

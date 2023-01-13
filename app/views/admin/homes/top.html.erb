@@ -21,13 +21,13 @@
    <tbody>
      <% @orders.each do |order| %>
     <tr>
-     <td><%= link_to admin_order_path(:id) do %>
+     <td><%= link_to admin_order_path(order.id) do %>
      <%= order.created_at.to_s(:datetime_jp) %>
      <% end %></td>
      <td><%= order.name %></td>
-     <td><%#= order.amount %></td>
+     <td><%= order.order_details.sum(:amount) %></td>
      <td>
-     <%#= order.status %>
+     <%= order.status_i18n %>
     <% end %></td>
 
      </td>

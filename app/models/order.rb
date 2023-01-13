@@ -8,10 +8,10 @@ belongs_to :customer
 has_many :order_details,dependent: :destroy
 
 
- def self.cart_items_total_price(cart_items)
+ def self.order_total_price(orders)
     array = []
-    cart_items.each do |cart_item|
-    array << cart_item.item.price * cart_item.amount
+    orders.each do |order|
+    array << order.item.price * order.amount
     end
     return (array.sum * 1.1).floor
  end
