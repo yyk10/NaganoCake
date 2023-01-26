@@ -33,7 +33,8 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params)
+    #@item.is_active = ActiveRecord::Type::Boolean.new.cast(item_params[:is_active])
+    if @item.update!(item_params)
     flash[:update]  = "商品情報を編集しました."
     redirect_to admin_item_path(@item.id)
     else
@@ -47,6 +48,6 @@ class Admin::ItemsController < ApplicationController
   private
 
  def item_params
-  params.require(:item).permit(:name, :introduction, :price, :is_active, :profile_image, :genre_id, :is_active )
+  params.require(:item).permit(:name, :introduction, :price, :profile_image, :genre_id, :is_active )
  end
 end

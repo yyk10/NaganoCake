@@ -8,17 +8,16 @@ class Public::OrdersController < ApplicationController
  def index
      @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
      @order_details = OrderDetail.all
-     @cart_items = CartItem.where(customer_id: current_customer.id)
-     @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
-     #@total_price = current_customer.order_details.order_details_total_price(@order.id)
+     @total_price = 0
+    
 
  end
 
   def show
     @order = Order.find(params[:id])
-   #@order_details = @order.order_details.all
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
+    @order_details = @order.order_details.all
+    @order_detail = OrderDetail.where(customer_id: current_customer.id)
+    @total_price = 0
   end
 
   def create

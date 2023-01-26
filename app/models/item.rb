@@ -3,7 +3,6 @@ class Item < ApplicationRecord
    validates :name, presence: true, length: { maximum: 50 }
    validates :introduction, presence: true, length: { maximum: 140 }
    validates :price, presence: true, length: { maximum: 30 }
-   validates :is_active, presence: true
 
   belongs_to :genre
   has_many :cart_items, dependent: :destroy

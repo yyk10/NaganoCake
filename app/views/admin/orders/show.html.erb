@@ -67,7 +67,7 @@
     <td><%= order_details.amount %></td>
     <td></td>
     <td><%= order_details.subtotal %></td>
-    <% end %>
+
     <td></td>
 
     <td>
@@ -84,10 +84,12 @@
 </div>
 
 <div class ="col-md-4">
+
+
     <table>
         <tr>
         <th>商品合計</th>
-        <td><%# @total_price.price %>円</td>
+        <td><% @total_price %>円</td>
         </tr>
         <tr>
         <th>送料</th>
@@ -95,10 +97,10 @@
         </tr>
         <tr>
             <th>請求合計金額</th>
-            <td><%# @total_price.price + 800 %>円</td>
+            <td><% @total_price + 800 %>円</td>
         </tr>
     </table>
-
+<% end %>
 </div>
 
 
