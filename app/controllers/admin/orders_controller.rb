@@ -8,11 +8,17 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-     @order = Order.find(params[:id])
-    if @order.update (order_params)
-      flash[:success] = "Order was successfully updated"
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    @order_details = @order.order_details
+      if @order.status == "waiting_for_paymant"
+      @order_details.each do |order_detail|
+        order_detail.make_status = "waiting_for_production"
+        order_detail.save
+      end
+      end
     redirect_to admin_order_path
-    end
+    
   end
 
   private
