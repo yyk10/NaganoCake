@@ -8,4 +8,15 @@ class OrderDetail < ApplicationRecord
     item.with_tax_price * amount
    end
 
+    def add_tax_price
+    (self.price  * 1.1).round
+    end
+
+   def taxin_price
+        price*1.1
+    end
+
+    def with_tax_price
+     (price * 1.1).floor
+    end
 end

@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
      @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
      @order_details = OrderDetail.all
      @total_price = 0
-    
+
 
  end
 
@@ -73,7 +73,7 @@ def confirm
   end
 
  end
- 
+
  def update
  end
 

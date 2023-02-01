@@ -43,10 +43,12 @@
     </tr>
   </thead>
 </table>
+</div>
+</div>
 
-
-<div class="row">
-<div class ="col-mx-9">
+<div class ="container">
+<div class="row justify-content-between">
+<div class ="col-8">
 <table class="table">
  <thead>
 　<tr>
@@ -62,7 +64,7 @@
 <tbody>
   <tr>
     <td scope="col"><%= order_detail.item.name %></td>
-    <td scope="col"><%= order_detail.price %></td>
+    <td scope="col"><%= order_detail.price.add_tax_price %></td>
     <td scope-"col"><%= order_detail.amount %></td>
     <td scope="col"><%= order_detail.subtotal %></td>
     <td scope="col">
@@ -74,13 +76,12 @@
     </td>
   </tr>
  </tbody>
+ <% end %>
 </table>
 </div>
-<% end %>
 
-
-<div class ="col-mx-3">
-    <table class="table table-borderless">
+    <div class ="col-4">
+    <table class="table table-borderless ">
         <tr>
         <th>商品合計</th>
 
@@ -98,10 +99,11 @@
         </tr>
 
     </table>
+    </div>
 </div>
 </div>
-</div>
-</div>
+
+
 
 
 

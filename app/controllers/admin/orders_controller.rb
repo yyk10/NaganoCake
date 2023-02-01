@@ -13,12 +13,12 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
       if @order.status == "waiting_for_paymant"
       @order_details.each do |order_detail|
-        order_detail.make_status = "waiting_for_production"
+        order_detail.making_status = "waiting_for_production"
         order_detail.save
       end
       end
     redirect_to admin_order_path
-    
+
   end
 
   private
