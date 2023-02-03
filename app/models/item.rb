@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   end
 
 	def taxin_price
-        price*1.1
+    price*1.1
   end
 
   def with_tax_price

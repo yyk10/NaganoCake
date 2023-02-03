@@ -56,23 +56,23 @@
     <th>単価（税込）</th>
     <th>数量</th>
     <th>小計</th>
-    <th>製作ステータス</th>
+    <!--th>製作ステータス</th-->
    </tr>
   </thead>
    <% @order_details.each do |order_detail| %>
-    <% @total_price += order_detail.price * order_detail.amount %>
+    <% @total_price += order_detail.add_tax_price * order_detail.amount %>
 <tbody>
   <tr>
     <td scope="col"><%= order_detail.item.name %></td>
-    <td scope="col"><%= order_detail.price.add_tax_price %></td>
+    <td scope="col"><%= order_detail.price %></td>
     <td scope-"col"><%= order_detail.amount %></td>
     <td scope="col"><%= order_detail.subtotal %></td>
     <td scope="col">
-      <%= form_with model: order_detail, url: admin_order_detail_path(order_detail) ,local: true do |f| %>
-      <%= select :making_status,:name,OrderDetail.making_statuses.keys.to_a.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+      <%#= form_with model: order_detail, url: admin_order_detail_path(order_detail) ,local: true do |f| %>
+      <%#= select :making_status,:name,OrderDetail.making_statuses.keys.to_a.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
       <%#= f.hidden_field :making_status, :value => @order_detail.making_status %>
-      <%= f.submit "更新する",class: "btn btn-success" %>
-      <% end %>
+      <%#= f.submit "更新する",class: "btn btn-success" %>
+      <%# end %>
     </td>
   </tr>
  </tbody>

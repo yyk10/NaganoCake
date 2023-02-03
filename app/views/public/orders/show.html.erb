@@ -52,7 +52,7 @@
 
    <h5><strong>請求情報</strong></h5>
    <% @order_details.each do |order_detail| %>
-   <% @total_price += order_detail.price * order_detail.amount %>
+   <% @total_price += order_detail.add_tax_price * order_detail.amount %>
    <table class="table">
     <tr>
        <th scope="col">商品合計</th>

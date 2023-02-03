@@ -12,7 +12,7 @@ class OrderDetail < ApplicationRecord
     (self.price  * 1.1).round
     end
 
-   def taxin_price
+    def taxin_price
         price*1.1
     end
 
