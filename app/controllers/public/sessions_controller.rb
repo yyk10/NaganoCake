@@ -43,7 +43,7 @@ class Public::SessionsController < Devise::SessionsController
   if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
     ## 【処理内容3】
   flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-   redirect_to new_user_registration
+   redirect_to new_customer_registration
   end
   end
 end
