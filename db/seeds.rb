@@ -8,4 +8,4 @@
 
 Admin.create!(email: "cake@cake",password: "nagano")
 
-Customer.create!(postage: "800")
+#Customer.create!(postage: "800")
