@@ -64,7 +64,7 @@
 <tbody>
   <tr>
     <td scope="col"><%= order_detail.item.name %></td>
-    <td scope="col"><%= order_detail.price %></td>
+    <td scope="col"><%= order_detail.add_tax_price %></td>
     <td scope-"col"><%= order_detail.amount %></td>
     <td scope="col"><%= order_detail.subtotal %></td>
     <td scope="col">
@@ -76,7 +76,7 @@
     </td>
   </tr>
  </tbody>
- <% end %>
+
 </table>
 </div>
 
@@ -85,7 +85,7 @@
         <tr>
         <th>商品合計</th>
 
-        <td><%= @total_price %>円</td>
+        <td><%= @total_price.to_s(:delimited) %>円</td>
         </tr>
         <tr>
         <th>送料</th>
@@ -95,10 +95,11 @@
         <tr>
         <th>請求合計金額</th>
 
-        <td><%= @total_price + 800 %>円</td>
+        <td><%= @total_price.to_s(:delimited) + 800 %>円</td>
         </tr>
 
     </table>
+    <% end %>
     </div>
 </div>
 </div>

@@ -23,7 +23,9 @@
       
       <% @items.each do |item| %>
       <div class = "offset-md-1">
+    <%= link_to public_item_path(item.id) do %>
     <%= image_tag item.get_profile_image(100,100) %>
+    <% end %>
     <br><%= item.name %>
     <br>¥<%= item.add_tax_price.to_s(:dalimited) %>
     </div>

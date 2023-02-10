@@ -26,9 +26,9 @@
   <% @cart_items.each do |cart_item| %>
    <td> <%= image_tag cart_item.item.get_profile_image(50,50) %><%= cart_item.item.name %> <!-- 商品名 --></td>
    <td></td>
-   <td><%= (cart_item.item.price).to_s(:delimited) %>　<!-- 金額 --></td>
+   <td><%= (cart_item.item.add_tax_price).to_s(:delimited) %>　<!-- 金額 --></td>
    <td><%= cart_item.amount %> <!-- 個数 --></td>
-   <td><%= (cart_item.item.price*cart_item.amount).to_s(:delimited) %> <!-- 小計 --></td>
+   <td><%= (cart_item.item.add_tax_price*cart_item.amount).to_s(:delimited) %> <!-- 小計 --></td>
   </tr>
 
 <% end %>
